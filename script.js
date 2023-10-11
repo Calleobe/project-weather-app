@@ -18,7 +18,7 @@ searchButton.addEventListener("click", () => {
       .then((response) => response.json())
       .then((data) => {
         let weatherCondition = data.weather[0].main; // This is from the returned data of the API
-
+        console.log(weatherCondition);
         //Change the colors based weather condition via CSS
 
         let categorizedWeather;
@@ -37,7 +37,11 @@ searchButton.addEventListener("click", () => {
           weatherIcon.innerHTML = `<img src="design/design2/icons/noun_Umbrella_2030530.svg" alt="Weather Icon">`;
           cityName.textContent = `Don't forget your umbrella. 
           It's wet in ${data.name} today.`;
-        } else {
+        }//else if () {
+          //categorizedWeather = "Rainy";
+          //weatherIcon.innerHTML = `<img src="design/design2/icons/noun_Umbrella_2030530.svg" alt="Weather Icon">`;
+          //cityName.textContent = `Don't forget your umbrella.`;
+          else {
           categorizedWeather = "Other";
           cityName.textContent = ` ${data.name} indicates ${weatherCondition} today.`;
         }
