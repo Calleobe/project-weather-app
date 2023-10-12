@@ -26,17 +26,17 @@ searchButton.addEventListener("click", () => {
           categorizedWeather = "Sunny";
           weatherIcon.innerHTML = `<img src="design/design2/icons/noun_Sunglasses_2055147.svg" alt="Weather Icon">`;
           cityName.textContent = `Get your sunnies on. 
-          ${data.name} is looking rather great today.`;
+          \n${data.name} is looking rather great today.`;
         } else if (weatherCondition === "Clouds") {
           categorizedWeather = "Cloudy";
           weatherIcon.innerHTML = `<img src="design/design2/icons/noun_Cloud_1188486.svg" alt="Weather Icon">`;
           cityName.textContent = `Light a fire and get cosy. 
-          ${data.name} is looking grey today.`;
+          \n${data.name} is looking grey today.`;
         } else if (["Rain", "Drizzle"].includes(weatherCondition)) {
           categorizedWeather = "Rainy";
           weatherIcon.innerHTML = `<img src="design/design2/icons/noun_Umbrella_2030530.svg" alt="Weather Icon">`;
           cityName.textContent = `Don't forget your umbrella. 
-          It's wet in ${data.name} today.`;
+          \nIt's wet in ${data.name} today.`;
         } else {
           categorizedWeather = "Other";
           cityName.textContent = ` ${data.name} indicates ${weatherCondition} today.`;

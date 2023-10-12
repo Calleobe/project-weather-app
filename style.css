@@ -1,7 +1,7 @@
 body {
   font-family: "Montserrat", sans-serif;
   background-color: #f7e9b9;
-  margin: 0;
+  margin: 30px;
   padding: 0;
 }
 
@@ -28,11 +28,11 @@ body[data-weather="Other"] {
 .container {
   max-width: 400px;
   margin: 0 auto;
-  padding: 20px;
 }
 
 p {
   font-size: 21px;
+  margin: 2px;
 }
 
 h2 {
@@ -70,6 +70,7 @@ button {
 
 #weatherIcon {
   font-size: 48px;
+  margin-top: 20px;
 }
 
 .forecast {
@@ -85,7 +86,8 @@ button {
 }
 
 .forecast-item {
-  max-width: 400px;
+  max-width: 360px;
+  border-bottom: 1px dashed;
   width: 100%;
   display: flex;
   justify-content: space-between;
