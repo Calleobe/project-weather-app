@@ -10,6 +10,12 @@ const citySunrise = document.getElementById("sunrise");
 const citySunset = document.getElementById("sunset");
 const weeklyForecast = document.getElementById("weeklyForecast");
 
+// Define a variable to track whether geolocation has been used.
+let geolocationUsed = false;
+
+// Default city (initially set based on geolocation)
+let defaultCity = "Göteborg";
+
 function displayWeatherData(data) {
   let weatherCondition = data.weather[0].main;
 
@@ -94,30 +100,40 @@ function showPosition(position) {
 }
 
 if (navigator.geolocation) {
-  navigator.geolocation.getCurrentPosition(showPosition, () => {
-    // Default city if geolocation fails...
-    const defaultCity = "Göteborg";
-    fetch(`${apiUrl}?q=${defaultCity}&appid=${apiKey}`)
-      .then((response) => response.json())
-      .then((data) => {
-        displayWeatherData(data);
-      });
+  navigator.geolocation.getCurrentPosition((position) => {
+    if (!geolocationUsed) {
+      geolocationUsed = true;
+      // Set the default city based on geolocation only if it hasn't been used before.
+      defaultCity = "";
+      showPosition(position);
+    }
   });
 } else {
-  const defaultCity = "Göteborg";
-  fetch(`${apiUrl}?q=${defaultCity}&appid=${apiKey}`)
-    .then((response) => response.json())
-    .then((data) => {
-      displayWeatherData(data);
-    });
+  // If geolocation is not available, set the default city to the fallback value.
+  defaultCity = "Göteborg";
+  fetchWeatherData(defaultCity);
 }
 
 searchButton.addEventListener("click", () => {
   const city = cityInput.value;
   if (city) {
+    // Update the default city with the user's input.
+    defaultCity = city;
     fetchWeatherData(city);
   }
 });
+
+// Function to fetch and display weather data for the default city
+function fetchWeatherData(city) {
+  fetch(`${apiUrl}?q=${city}&appid=${apiKey}`)
+    .then((response) => response.json())
+    .then((data) => {
+      displayWeatherData(data);
+    })
+    .catch((error) => {
+      console.error("Error fetching current weather data:", error);
+    });
+}
 
 // Function to format time
 function formatTime(date) {
@@ -129,3 +145,14 @@ function formatTime(date) {
   const formattedTime = new Intl.DateTimeFormat("default", options).format(date);
   return formattedTime.replace(":", ".");
 }
+
+// Prevent the form from submitting
+document.getElementById("searchForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const city = document.getElementById("cityInput").value;
+  if (city) {
+    // Update the default city with the user's input.
+    defaultCity = city;
+    fetchWeatherData(city);
+  }
+});
