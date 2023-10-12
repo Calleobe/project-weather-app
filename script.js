@@ -128,10 +128,18 @@ function fetchWeatherData(city) {
   fetch(`${apiUrl}?q=${city}&appid=${apiKey}`)
     .then((response) => response.json())
     .then((data) => {
-      displayWeatherData(data);
+      if (data.cod === 200) {
+        // Valid weather data
+        displayWeatherData(data);
+        document.getElementById("error").textContent = ""; // Clear any previous error message
+      } else {
+        // Invalid input, show error message
+        document.getElementById("error").textContent = "Invalid city or location.";
+      }
     })
     .catch((error) => {
       console.error("Error fetching current weather data:", error);
+      document.getElementById("error").textContent = "An error occurred while fetching data.";
     });
 }
 
@@ -156,3 +164,6 @@ document.getElementById("searchForm").addEventListener("submit", function (e) {
     fetchWeatherData(city);
   }
 });
+
+// Set the default city to "Göteborg" on page load
+fetchWeatherData(defaultCity);

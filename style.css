@@ -41,7 +41,38 @@ h2 {
 .search-box {
   text-align: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
+}
+
+/* Define styles for search button and input based on data-weather attribute */
+#searchButton,
+#cityInput {
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #f4f7f8;
+  color: #164a68;
+  margin-right: 20px;
+  border: 1px solid;
+}
+
+#searchButton[data-weather="Sunny"] {
+  background: #2a5510;
+  color: #fff;
+}
+
+#searchButton[data-weather="Cloudy"] {
+  background: #f47775;
+}
+
+#cityInput[data-weather="Sunny"] {
+  color: #2a5510;
+}
+
+#cityInput[data-weather="Cloudy"] {
+  color: #f47775;
 }
 
 .error {
