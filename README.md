@@ -1,7 +1,6 @@
 # Weather App
 
 Technigo JS/React Course project THREE: Project Weather App, by F. Cassisa & C. Öberg. 
-All the first step have been done togheter. Then we splitted up into two different forks two work on specific tasks. 
 
 ## The problem
 
