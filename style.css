@@ -5,23 +5,23 @@ body {
   padding: 0;
 }
 
-  /* Define styles based on data-weather attribute */
-  body[data-weather="Sunny"] {
-    background-color: #f7e9b9;
-    color: #2a5510;
-  }
-  
-  body[data-weather="Cloudy"] {
-    background-color: #f4f7f8;
-    color: #f47775;
-  }
-  
-  body[data-weather="Rainy"],
-  body[data-weather="Snowy"],
-  body[data-weather="Other"] {
-    background-color: #a3def7;
-    color: #164a68;
-  }
+/* Define styles based on data-weather attribute */
+body[data-weather="Sunny"] {
+  background-color: #f7e9b9;
+  color: #2a5510;
+}
+
+body[data-weather="Cloudy"] {
+  background-color: #f4f7f8;
+  color: #f47775;
+}
+
+body[data-weather="Rainy"],
+body[data-weather="Snowy"],
+body[data-weather="Other"] {
+  background-color: #a3def7;
+  color: #164a68;
+}
 
 .container {
   max-width: 400px;
