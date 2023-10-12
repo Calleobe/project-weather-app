@@ -18,7 +18,6 @@ We've asked a couple of different designers to do their take on this project. It
 - When you’re finished with the project, only one person (owner of the repo) needs to open a Pull Request into the Technigo repo.
 - Hand in your project the usual way
 
----
 
 ## Hints and tips to complete the project 🤓
 For this project, we suggest that you lay out the foundation of your project together using pair programming. After that, it's time to split up and start working in branches.
