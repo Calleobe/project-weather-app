@@ -50,7 +50,7 @@ h2 {
 /* Define styles for search button and input based on data-weather attribute */
 #searchButton,
 #cityInput {
-  max-width: 33%;
+  max-width: 35%;
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 4px;
@@ -181,8 +181,6 @@ h2 {
   animation-duration: 27s;
 }
 
-/* Add more cloud styles as needed */
-
 @keyframes moveCloud {
   0%,
   100% {
@@ -200,5 +198,47 @@ h2 {
   75% {
     left: 50%;
     bottom: 0px; /* Lowest point of vertical wave */
+  }
+}
+
+.raindrop {
+  position: absolute;
+  bottom: 100%;
+  animation: rainAnimation 1s linear infinite;
+}
+
+.drop1 {
+  left: 10%;
+  animation-delay: 0.2s;
+}
+
+.drop2 {
+  left: 30%;
+  animation-delay: 0.5s;
+}
+
+.drop3 {
+  left: 50%;
+  animation-delay: 0.8s;
+}
+
+.drop4 {
+  left: 70%;
+  animation-delay: 0.1s;
+}
+
+.drop5 {
+  left: 85%;
+  animation-delay: 0.3s;
+}
+
+@keyframes rainAnimation {
+  0% {
+    bottom: 100%;
+    transform: translateY(0);
+  }
+  100% {
+    bottom: 0;
+    transform: translateY(300px);
   }
 }

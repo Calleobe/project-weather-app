@@ -39,16 +39,21 @@ function displayWeatherData(data) {
       <img src="${weatherIconPath}" alt="Cloud" class="moving-cloud cloud3">
       <img src="${weatherIconPath}" alt="Cloud" class="moving-cloud cloud4">
       <img src="${weatherIconPath}" alt="Cloud" class="moving-cloud cloud5">
-
-      <!-- Add more clouds as needed -->
   </div>`;
       break;
     case "Rain":
     case "Drizzle":
       categorizedWeather = "Rainy";
       weatherIconPath = "design/design2/icons/noun_Umbrella_2030530.svg";
-      cityName.textContent = `Don't forget your umbrella. It's wet in ${data.name} today.`;
-      weatherIcon.innerHTML = `<img src="${weatherIconPath}" alt="Weather Icon">`;
+      weatherIcon.innerHTML = `<div class="rain-container">
+      <img src="design/design2/icons/raindrop.svg" alt="Raindrop" class="raindrop drop1">
+      <img src="design/design2/icons/raindrop.svg" class="raindrop drop2">
+      <img src="design/design2/icons/raindrop.svg" class="raindrop drop3">
+      <img src="design/design2/icons/raindrop.svg" class="raindrop drop4">
+      <img src="design/design2/icons/raindrop.svg" class="raindrop drop5">
+
+  </div>
+      <img src="${weatherIconPath}" alt="Weather Icon">`;
       break;
     case "Snow":
       categorizedWeather = "Snowy";
@@ -72,7 +77,6 @@ function displayWeatherData(data) {
   temperature.textContent = `${data.weather[0].description} | ${(
     data.main.temp - 273.15
   ).toFixed(1)}°C`;
-  //weatherIcon.innerHTML = `<img src="${weatherIconPath}" alt="Weather Icon">`;
 
   fetchWeeklyForecast(data.name);
 }
