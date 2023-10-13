@@ -27,22 +27,34 @@ function displayWeatherData(data) {
       categorizedWeather = "Sunny";
       weatherIconPath = "design/design2/icons/noun_Sunglasses_2055147.svg";
       cityName.textContent = `Get your sunnies on. ${data.name} is looking rather great today.`;
+      weatherIcon.innerHTML = `<img src="${weatherIconPath}" alt="Weather Icon">`;
       break;
     case "Clouds":
       categorizedWeather = "Cloudy";
-      weatherIconPath = "design/design2/icons/noun_Cloud_1188486.svg";
+      weatherIconPath = "design/design2/icons/Cloud2.svg";
       cityName.textContent = `Light a fire and get cosy. ${data.name} is looking grey today.`;
+      weatherIcon.innerHTML = `<div class="cloud-container">
+      <img src="${weatherIconPath}" alt="Cloud" class="moving-cloud cloud1">
+      <img src="${weatherIconPath}" alt="Cloud" class="moving-cloud cloud2">
+      <img src="${weatherIconPath}" alt="Cloud" class="moving-cloud cloud3">
+      <img src="${weatherIconPath}" alt="Cloud" class="moving-cloud cloud4">
+      <img src="${weatherIconPath}" alt="Cloud" class="moving-cloud cloud5">
+
+      <!-- Add more clouds as needed -->
+  </div>`;
       break;
     case "Rain":
     case "Drizzle":
       categorizedWeather = "Rainy";
       weatherIconPath = "design/design2/icons/noun_Umbrella_2030530.svg";
       cityName.textContent = `Don't forget your umbrella. It's wet in ${data.name} today.`;
+      weatherIcon.innerHTML = `<img src="${weatherIconPath}" alt="Weather Icon">`;
       break;
     case "Snow":
       categorizedWeather = "Snowy";
       weatherIconPath = "design/design2/icons/Snow.svg";
       cityName.textContent = `Get warm clothes for these flakes outside.`;
+      weatherIcon.innerHTML = `<img src="${weatherIconPath}" alt="Weather Icon">`;
       break;
     default:
       categorizedWeather = "Other";
@@ -57,8 +69,10 @@ function displayWeatherData(data) {
   const sunsetTime = new Date(data.sys.sunset * 1000);
   citySunrise.textContent = `sunrise ${formatTime(sunriseTime)}`;
   citySunset.textContent = `sunset ${formatTime(sunsetTime)}`;
-  temperature.textContent = `${data.weather[0].description} | ${(data.main.temp - 273.15).toFixed(1)}°C`;
-  weatherIcon.innerHTML = `<img src="${weatherIconPath}" alt="Weather Icon">`;
+  temperature.textContent = `${data.weather[0].description} | ${(
+    data.main.temp - 273.15
+  ).toFixed(1)}°C`;
+  //weatherIcon.innerHTML = `<img src="${weatherIconPath}" alt="Weather Icon">`;
 
   fetchWeeklyForecast(data.name);
 }
@@ -75,10 +89,14 @@ function fetchWeatherByCoordinates(lat, lon) {
 }
 
 function fetchWeeklyForecast(city) {
-  fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`)
+  fetch(
+    `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}`
+  )
     .then((response) => response.json())
     .then((forecastData) => {
-      const dailyForecasts = forecastData.list.filter((item) => item.dt_txt.includes("12:00:00"));
+      const dailyForecasts = forecastData.list.filter((item) =>
+        item.dt_txt.includes("12:00:00")
+      );
       weeklyForecast.innerHTML = "";
       dailyForecasts.forEach((forecast) => {
         const date = new Date(forecast.dt * 1000);
@@ -134,12 +152,14 @@ function fetchWeatherData(city) {
         document.getElementById("error").textContent = ""; // Clear any previous error message
       } else {
         // Invalid input, show error message
-        document.getElementById("error").textContent = "Invalid city or location.";
+        document.getElementById("error").textContent =
+          "Invalid city or location.";
       }
     })
     .catch((error) => {
       console.error("Error fetching current weather data:", error);
-      document.getElementById("error").textContent = "An error occurred while fetching data.";
+      document.getElementById("error").textContent =
+        "An error occurred while fetching data.";
     });
 }
 
@@ -150,7 +170,9 @@ function formatTime(date) {
     minute: "2-digit",
     timeZone: "CET",
   };
-  const formattedTime = new Intl.DateTimeFormat("default", options).format(date);
+  const formattedTime = new Intl.DateTimeFormat("default", options).format(
+    date
+  );
   return formattedTime.replace(":", ".");
 }
 
