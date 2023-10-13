@@ -109,11 +109,21 @@ h2 {
   text-align: center;
 }
 
+#toggleHumidityWind {
+  padding-bottom: 10px;
+  font-size: 12px;
+  text-align: left;
+  text-decoration: underline;
+}
 .weather-info {
   text-align: left;
   margin-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
+}
+
+img {
+  padding-top: 20px;
 }
 
 #weatherIcon {
@@ -149,7 +159,7 @@ h2 {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 200px; /* Adjust based on your requirement */
+  height: 150px; /* Adjust based on your requirement */
 }
 
 .moving-cloud {
@@ -269,6 +279,7 @@ h2 {
 
 .sun-container {
   position: relative;
+  margin-top: 60px;
   animation: sunRise 5s forwards;
 }
 
@@ -287,6 +298,7 @@ h2 {
   border-radius: 50%; /* Makes it a circle */
   width: 54px; /* Adjusted for the border width to maintain the overall size */
   height: 54px;
+
   position: absolute;
   top: 50%;
   left: 50%;
@@ -338,4 +350,10 @@ h2 {
 }
 .beam8 {
   transform: rotate(315deg) translateY(-80px);
+}
+
+#copyright {
+  margin: 20px;
+  text-align: center;
+  font-size: 11px;
 }
