@@ -14,4 +14,4 @@ We tried to work with branch, pull requests and resolve conflicts we faced on th
 
 ## View it live
 
-Link to Netlify: 
+Link to Vercel: https://project-weather-app-sigma.vercel.app/
