@@ -80,11 +80,22 @@ h2 {
   text-align: center;
 }
 
+#toggleHumidityWind {
+  padding-top: 15px;
+  padding-bottom: 10px;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: underline;
+}
 .weather-info {
   text-align: left;
   margin-top: 20px;
   margin-left: 20px;
   margin-right: 20px;
+}
+
+img {
+  padding-top: 20px;
 }
 
 #weatherIcon {
@@ -113,4 +124,10 @@ h2 {
   margin-left: 20px;
   margin-right: 20px;
   text-align: left;
+}
+
+#copyright {
+  margin: 20px;
+  text-align: center;
+  font-size: 11px;
 }

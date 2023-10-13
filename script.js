@@ -8,6 +8,11 @@ const weatherIcon = document.getElementById("weatherIcon");
 const temperature = document.getElementById("temperature");
 const citySunrise = document.getElementById("sunrise");
 const citySunset = document.getElementById("sunset");
+//Extra data:
+const toggleButton = document.getElementById("toggleHumidityWind");
+const humidity = document.getElementById("humidity");
+const windSpeed = document.getElementById("windSpeed");
+
 const weeklyForecast = document.getElementById("weeklyForecast");
 
 // Define a variable to track whether geolocation has been used.
@@ -57,11 +62,34 @@ function displayWeatherData(data) {
   const sunsetTime = new Date(data.sys.sunset * 1000);
   citySunrise.textContent = `sunrise ${formatTime(sunriseTime)}`;
   citySunset.textContent = `sunset ${formatTime(sunsetTime)}`;
+  //EXTRA, More data to be shown for each city:
+  //WindSpeed -- extra:
+  windSpeed.textContent = `wind speed: ${data.wind.speed} m/s`;
+  //Humidity -- extra:
+  humidity.textContent = `humidity: ${data.main.humidity}%`;
   temperature.textContent = `${data.weather[0].description} | ${(data.main.temp - 273.15).toFixed(1)}°C`;
   weatherIcon.innerHTML = `<img src="${weatherIconPath}" alt="Weather Icon">`;
 
   fetchWeeklyForecast(data.name);
+  console.log("Full API Response:", data);
 }
+
+//EXTRA: toggle for extra:
+let isHumidityWindVisible = false;
+
+toggleButton.addEventListener("click", () => {
+  isHumidityWindVisible = !isHumidityWindVisible;
+
+  if (isHumidityWindVisible) {
+    humidity.style.display = "block";
+    windSpeed.style.display = "block";
+    toggleButton.textContent = "Hide extra info";
+  } else {
+    humidity.style.display = "none";
+    windSpeed.style.display = "none";
+    toggleButton.textContent = "Show extra info";
+  }
+});
 
 function fetchWeatherByCoordinates(lat, lon) {
   fetch(`${apiUrl}?lat=${lat}&lon=${lon}&appid=${apiKey}`)
@@ -167,3 +195,6 @@ document.getElementById("searchForm").addEventListener("submit", function (e) {
 
 // Set the default city to "Göteborg" on page load
 fetchWeatherData(defaultCity);
+
+
+
