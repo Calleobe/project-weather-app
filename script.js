@@ -45,6 +45,7 @@ function displayWeatherData(data) {
     case "Drizzle":
       categorizedWeather = "Rainy";
       weatherIconPath = "design/design2/icons/noun_Umbrella_2030530.svg";
+      cityName.textContent = `Don't forget your umbrella. \nIt's wet in ${data.name} today.`;
       weatherIcon.innerHTML = `<div class="rain-container">
       <img src="design/design2/icons/raindrop.svg" alt="Raindrop" class="raindrop drop1">
       <img src="design/design2/icons/raindrop.svg" class="raindrop drop2">
