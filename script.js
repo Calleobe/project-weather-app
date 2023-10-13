@@ -52,7 +52,7 @@ function displayWeatherData(data) {
       break;
     case "Clouds":
       categorizedWeather = "Cloudy";
-      weatherIconPath = "design/design2/icons/Cloud2.svg";
+      weatherIconPath = "design/design2/icons/cloud2.svg";
       cityName.textContent = `Light a fire and get cosy. ${data.name} is looking grey today.`;
       weatherIcon.innerHTML = `<div class="cloud-container">
       <img src="${weatherIconPath}" alt="Cloud" class="moving-cloud cloud1">
