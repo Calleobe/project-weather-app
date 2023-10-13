@@ -27,7 +27,23 @@ function displayWeatherData(data) {
       categorizedWeather = "Sunny";
       weatherIconPath = "design/design2/icons/noun_Sunglasses_2055147.svg";
       cityName.textContent = `Get your sunnies on. ${data.name} is looking rather great today.`;
-      weatherIcon.innerHTML = `<img src="${weatherIconPath}" alt="Weather Icon">`;
+      weatherIcon.innerHTML = `
+      <div class="scene">
+     
+      <div class="sun-container">
+      <div class="sun"></div>
+          <div class="beam beam1"></div>
+          <div class="beam beam2"></div>
+          <div class="beam beam3"></div>
+          <div class="beam beam4"></div>
+          <div class="beam beam5"></div>
+          <div class="beam beam6"></div>
+          <div class="beam beam7"></div>
+          <div class="beam beam8"></div>
+      </div>
+  </div>
+  <img src="${weatherIconPath}" alt="Weather Icon">
+      `;
       break;
     case "Clouds":
       categorizedWeather = "Cloudy";
@@ -47,14 +63,15 @@ function displayWeatherData(data) {
       weatherIconPath = "design/design2/icons/noun_Umbrella_2030530.svg";
       cityName.textContent = `Don't forget your umbrella. \nIt's wet in ${data.name} today.`;
       weatherIcon.innerHTML = `<div class="rain-container">
+      <img src="${weatherIconPath}" alt="Weather Icon">
       <img src="design/design2/icons/raindrop.svg" alt="Raindrop" class="raindrop drop1">
       <img src="design/design2/icons/raindrop.svg" class="raindrop drop2">
       <img src="design/design2/icons/raindrop.svg" class="raindrop drop3">
       <img src="design/design2/icons/raindrop.svg" class="raindrop drop4">
       <img src="design/design2/icons/raindrop.svg" class="raindrop drop5">
 
-  </div>
-      <img src="${weatherIconPath}" alt="Weather Icon">`;
+  </div>`;
+
       break;
     case "Snow":
       categorizedWeather = "Snowy";

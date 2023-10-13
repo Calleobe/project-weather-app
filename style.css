@@ -24,6 +24,7 @@ body[data-weather="Other"] {
 }
 
 .container {
+  z-index: 1;
   max-width: 400px;
   margin: 0 auto;
 }
@@ -41,23 +42,29 @@ h2 {
 .search-box {
   max-width: 400px;
   color: #f4f7f8;
-  text-align: center;
+  margin-left: 20px;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: flex;
 }
 
 /* Define styles for search button and input based on data-weather attribute */
-#searchButton,
+#searchButton {
+  padding: 10px 10px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  background: #f4f7f8;
+  margin-right: 20px;
+}
 #cityInput {
-  max-width: 35%;
+  max-width: 40%;
   padding: 10px 20px;
   font-size: 16px;
   border-radius: 4px;
   cursor: pointer;
   background: #f4f7f8;
   margin-right: 20px;
-  margin-left: 20px;
 }
 
 #searchButton[data-weather="Sunny"] {
@@ -112,6 +119,7 @@ h2 {
 #weatherIcon {
   font-size: 48px;
   margin-top: 20px;
+  z-index: 1;
 }
 
 .forecast {
@@ -201,6 +209,14 @@ h2 {
   }
 }
 
+.rain-container {
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+  width: 100%;
+  height: 100px; /* Adjust based on your requirement */
+}
+
 .raindrop {
   position: absolute;
   bottom: 100%;
@@ -239,6 +255,87 @@ h2 {
   }
   100% {
     bottom: 0;
-    transform: translateY(300px);
+    transform: translateY(200px);
   }
+}
+
+.scene {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row; /* Make items lay out horizontally */
+  margin-right: 20%;
+}
+
+.sun-container {
+  position: relative;
+  animation: sunRise 5s forwards;
+}
+
+@keyframes sunRise {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.sun {
+  border: 3px solid #2a5510; /* Border color and width */
+  background-color: transparent; /* No fill color */
+  border-radius: 50%; /* Makes it a circle */
+  width: 54px; /* Adjusted for the border width to maintain the overall size */
+  height: 54px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.beam {
+  background-color: #2a5510;
+  width: 3px;
+  height: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-origin: 50% 0%; /* Adjust the beams' origin to the center-top */
+  animation: pulseBeam 1.5s infinite alternate;
+}
+
+@keyframes pulseBeam {
+  0%,
+  100% {
+    height: 20px;
+  }
+  50% {
+    height: 30px;
+  }
+}
+
+.beam1 {
+  transform: rotate(0deg) translateY(-80px);
+}
+.beam2 {
+  transform: rotate(45deg) translateY(-80px);
+}
+.beam3 {
+  transform: rotate(90deg) translateY(-80px);
+}
+.beam4 {
+  transform: rotate(135deg) translateY(-80px);
+}
+.beam5 {
+  transform: rotate(180deg) translateY(-80px);
+}
+.beam6 {
+  transform: rotate(225deg) translateY(-80px);
+}
+.beam7 {
+  transform: rotate(270deg) translateY(-80px);
+}
+.beam8 {
+  transform: rotate(315deg) translateY(-80px);
 }
