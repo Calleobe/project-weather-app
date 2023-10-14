@@ -87,6 +87,7 @@ function displayWeatherData(data) {
     default:
       categorizedWeather = "Other";
       cityName.textContent = `${data.name} indicates ${weatherCondition} today.`;
+      weatherIcon.innerHTML = "";
   }
 
   document.body.setAttribute("data-weather", categorizedWeather);
