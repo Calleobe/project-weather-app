@@ -96,8 +96,9 @@ function displayWeatherData(data) {
 
   const sunriseTime = new Date(data.sys.sunrise * 1000);
   const sunsetTime = new Date(data.sys.sunset * 1000);
-  citySunrise.textContent = `sunrise ${formatTime(sunriseTime)}`;
-  citySunset.textContent = `sunset ${formatTime(sunsetTime)}`;
+  citySunrise.textContent = `sunrise ${formatTime(sunriseTime, data.timezone)}`;
+  citySunset.textContent = `sunset ${formatTime(sunsetTime, data.timezone)}`;
+
   //EXTRA, More data to be shown for each city:
   //WindSpeed -- extra:
   windSpeed.textContent = `wind speed: ${data.wind.speed} m/s`;
@@ -216,16 +217,15 @@ function fetchWeatherData(city) {
 }
 
 // Function to format time
-function formatTime(date) {
-  const options = {
+function formatTime(date, timezoneOffsetInSeconds) {
+  // Convert seconds to milliseconds
+  const localDate = new Date(date.getTime() + timezoneOffsetInSeconds * 1000);
+  const timeString = localDate.toLocaleTimeString([], {
     hour: "2-digit",
     minute: "2-digit",
-    timeZone: "CET",
-  };
-  const formattedTime = new Intl.DateTimeFormat("default", options).format(
-    date
-  );
-  return formattedTime.replace(":", ".");
+  });
+
+  return timeString.replace(":", ".");
 }
 
 // Prevent the form from submitting
